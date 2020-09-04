@@ -75,7 +75,7 @@ exports.getSensors = (req, res, next) => {
 };
 exports.getCart = (req, res, next) => {
   req.user
-    .populate('cart.items.productId')
+    .populate('cart.items.product')
     .execPopulate()
     .then(user => {
       const products = user.cart.items;
