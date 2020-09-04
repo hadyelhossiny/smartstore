@@ -1,4 +1,5 @@
 const path = require('path');
+const PORT = process.env.PORT || 3000;
 const order = require('./models/order')
 const db = require('db')
 const multer = require('multer');
@@ -170,7 +171,7 @@ client.on('connect', function() { // When connected
 mongoose
   .connect(MONGODB_URI)
   .then(result => {
-    app.listen(3000, '0.0.0.0');
+    app.listen(PORT);
   })
   .catch(err => {
     console.log(err);
