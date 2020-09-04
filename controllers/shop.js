@@ -8,15 +8,8 @@ const isAdmin = require('../middleware/is-admin');
 const fs = require('fs');
 const path = require('path');
 const ejs = require('ejs')
-const sendgridTransport = require('nodemailer-sendgrid-transport');
-const transporter = nodemailer.createTransport(
-  sendgridTransport({
-    auth: {
-      api_key:
-        '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'
-    }
-  })
-);
+
+
 
 exports.getProducts = (req, res, next) => {
   Product.find()
@@ -144,12 +137,7 @@ exports.postOrder = (req, res, next) => {
 
       });
       console.log(products)
-      transporter.sendMail({
-        to: 'hady.elhossiny1132@gmail.com',
-        from: 'SmartStore@node-complete.com',
-        subject: 'Orders!',
-        html:'hello'
-      });
+      
       
       return order.save();
     })
