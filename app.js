@@ -79,7 +79,7 @@ const adminRoutes = require('./routes/admin');
 const shopRoutes = require('./routes/shop');
 const authRoutes = require('./routes/auth');
 app.use(compression());
-app.use(helmet());
+//app.use(helmet());
 app.use(morgan('combined'));
 
 app.use(bodyParser.urlencoded({ extended: false }));
