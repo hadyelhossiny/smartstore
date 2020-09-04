@@ -1,13 +1,16 @@
 const path = require('path');
+
 const PORT = process.env.PORT || 3000;
+const compression = require('compression');
 const order = require('./models/order')
 const db = require('db')
 const multer = require('multer');
 var fs = require('fs');
 const Sensor = require('./models/sensor')
 const express = require('express');
+const helmet = require('helmet');
 const bodyParser = require('body-parser');
-
+const morgan = require ('morgan')
 const mongoose = require('mongoose');
 const session = require('express-session');
 const MongoDBStore = require('connect-mongodb-session')(session);
@@ -75,6 +78,9 @@ app.set('views', 'views');
 const adminRoutes = require('./routes/admin');
 const shopRoutes = require('./routes/shop');
 const authRoutes = require('./routes/auth');
+app.use(compression());
+app.use(helmet());
+app.use(morgan('combined'));
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
